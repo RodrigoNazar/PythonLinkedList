@@ -57,6 +57,17 @@ class LinkedList:
             del node
             self.len -= 1
 
+    def __iter__(self):
+        self.cursor = self.head
+        return self
+
+    def __next__(self):
+        if self.cursor is None:
+            raise StopIteration
+        current = self.cursor
+        self.cursor = self.cursor.next
+        return current
+
     def __len__(self):
         return self.len
 
